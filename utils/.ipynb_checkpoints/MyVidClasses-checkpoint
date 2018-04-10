@@ -1,0 +1,46 @@
+i#!/usr/bin/python3
+from time import sleep
+import numpy as np
+import pyqtgraph as pg
+import time, sys, os, cv2
+import argparse, datetime, imutils
+import threading
+from PyQt5 import QtGui, QtCore
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import Qt
+from threading import Thread, Timer
+from PIL import Image
+from RawImageWidget import RawImageWidget
+from MyGif import MyGif
+from MyThread import MyThread, MyThread2 
+from MyTimer import MyTimer
+from MyArduino import MyArduino
+
+from RawImageWidget import RawImageWidget
+from pyqtgraph.Qt import QtCore, QtGui, QtOpenGL
+import serial
+
+
+class MyQtWidget(QtGui.QWidget):
+    def __init__(self):
+        super(MyQtWidget, self).__init__()
+        
+        self.initUI()
+    
+    
+    def initUI(self):      
+        self.move(0,0)
+        self.resize(1000,800)
+        self.show()
+
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Escape:
+            self.close()
+            
+            
+    def load_picture(self):
+        file_path = '/Users/virginiarutten/Documents/deep_fish/assets/pavlov_dog.jpg'
+        self.bkImage = np.array(Image.open(file_path)).T
+            
+       
